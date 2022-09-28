@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Product;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
@@ -33,7 +34,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'description',
             'image',
             'price',
-            //'status',
+            'status',
             //'created_at',
             //'update_at',
             //'created_by',
