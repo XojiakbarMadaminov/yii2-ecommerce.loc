@@ -11,7 +11,9 @@ use yii\bootstrap5\ActiveForm;
 
 <div class="product-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin([
+            'options' => ['enctype' => 'multipart/form-data']
+    ]); ?>
 
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
@@ -20,13 +22,13 @@ use yii\bootstrap5\ActiveForm;
             'preset' => 'basic'
     ]) ?>
 
-    <?= $form->field($model, 'image')->fileInput() ?>
+    <?= $form->field($model, 'imageFile')->input('file') ?>
 
     <?= $form->field($model, 'price')->textInput([
             'type' => 'number'
     ]) ?>
 
-    <?= $form->field($model, 'status')->checkbox() ?>
+    <?= $form->field($model, 'status')->checkbox(['checked' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
