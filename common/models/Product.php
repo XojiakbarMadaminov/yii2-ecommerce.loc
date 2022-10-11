@@ -2,11 +2,9 @@
 
 namespace common\models;
 
-use common\helpers\Time;
 use Yii;
-use yii\behaviors\BlameableBehavior;
-use yii\behaviors\TimestampBehavior;
 use yii\helpers\FileHelper;
+use yii\helpers\StringHelper;
 use yii\web\UploadedFile;
 
 /**
@@ -174,5 +172,9 @@ class Product extends \yii\db\ActiveRecord
         }
 
         return Yii::$app->params['frontendUrl'] . '/img/no_image.png';
+    }
+
+    public function getShortDescription(){
+        return StringHelper::truncateWords(strip_tags($this->description),30);
     }
 }
