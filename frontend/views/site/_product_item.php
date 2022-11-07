@@ -5,7 +5,7 @@
 ?>
 <div class="card h-100">
     <a href="#" class="img-wrapper">
-        <img class="card-img-top" src="<?php echo $model->getImageUrl() ?>" alt="">
+        <img class="card-img-top p-1" src="<?php echo $model->getImageUrl() ?>" alt="">
     </a>
     <div class="card-body">
         <h5 class="card-title">

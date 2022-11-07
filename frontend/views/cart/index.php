@@ -1,6 +1,7 @@
 <?php
 /**
  * @var array $items
+ * @var float $totalPrice
  */
 ?>
 
@@ -48,7 +49,10 @@
             <?php endforeach;?>
             </tbody>
         </table>
-        <a href="<?php echo \yii\helpers\Url::to(['/cart/checkout'])?>" class="btn btn-primary me-0">Chekout</a>
+        <div class="text-right mr-auto"><p class="text-right pl-5">Total price: <?=Yii::$app->formatter->asCurrency($totalPrice)?></p></div>
+
+
+            <a href="<?php echo \yii\helpers\Url::to(['/cart/checkout'])?>" class="btn btn-primary me-0">Chekout</a>
         <?php else: ?>
         <p class="text-muted text-center p-5">There are no items in the cart yet</p>
         <?php endif;?>
