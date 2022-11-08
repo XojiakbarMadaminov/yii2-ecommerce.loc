@@ -33,7 +33,7 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_ACTIVE = 10;
 
     public $password;
-    public $passwordConfirm;
+    public $password_repeat;
 
     /**
      * {@inheritdoc}
@@ -64,6 +64,8 @@ class User extends ActiveRecord implements IdentityInterface
             [['firstname', 'lastname', 'username', 'email'], 'string', 'max' => 255],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['password', 'string', 'min' => 8],
+            ['password_repeat', 'compare', 'compareAttribute' => 'password']
         ];
     }
 
@@ -243,5 +245,14 @@ class User extends ActiveRecord implements IdentityInterface
         $address = $this->addresses[0] ?? new UserAddress();
         $address->user_id = $this->id;
         return $address;
+    }
+
+    public function afterValidate()
+    {
+        if ($this->password){
+            parent::afterValidate();
+            $this->password_hash = Yii::$app->security->generatePasswordHash($this->password);
+        }
+
     }
 }
