@@ -53,7 +53,6 @@
     </div>
     <div class="col">
         <h5>Products</h5>
-
         <hr>
         <table class="table">
             <tr>
