@@ -232,4 +232,5 @@ class SiteController extends \frontend\base\Controller
             'model' => $model
         ]);
     }
+
 }

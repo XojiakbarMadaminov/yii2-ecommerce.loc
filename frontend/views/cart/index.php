@@ -33,11 +33,11 @@
                         <img src="<?php echo \common\models\Product::formatImageUrl($item['image'])?>" alt="<?php echo $item['name']?>"
                              style="width: 50px">
                     </td>
-                    <td><?php echo $item['price']?></td>
+                    <td><?php echo Yii::$app->formatter->asCurrency($item['price']) ?></td>
                     <td>
                         <input type="number" min="1" class="form-control item-quantity" style="width: 60px" value="<?=$item['quantity']?>">
                     </td>
-                    <td><?php echo $item['total_price']?></td>
+                    <td><?php echo Yii::$app->formatter->asCurrency($item['total_price'])?></td>
                     <td>
                         <?php echo \yii\helpers\Html::a('Delete', ['/cart/delete', 'id' => $item['id']], [
                             'class' => 'btn btn-outline-danger btn-sm',
@@ -49,7 +49,6 @@
             <?php endforeach;?>
             </tbody>
         </table>
-        <div class="text-right mr-auto"><p class="text-right pl-5">Total price: <?=Yii::$app->formatter->asCurrency($totalPrice)?></p></div>
 
 
             <a href="<?php echo \yii\helpers\Url::to(['/cart/checkout'])?>" class="btn btn-primary me-0">Chekout</a>
