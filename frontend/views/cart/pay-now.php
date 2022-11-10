@@ -53,29 +53,7 @@
     </div>
     <div class="col">
         <h5>Products</h5>
-        <table class="table table-sm">
-            <thead>
-            <tr>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Quantity</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($order->orderItems as $item): ?>
-                <tr>
-                    <td>
-                        <img src=" <?php echo $item->product->getImageUrl()?>" style="width: 50px" alt="">
-                    </td>
-                    <td><?php echo $item->product_name ?></td>
-                    <td><?php echo $item->quantity ?></td>
-                    <td><?php echo Yii::$app->formatter->asCurrency($item->quantity * $item->unit_price) ?></td>
-                </tr>
 
-            <?php endforeach; ?>
-            </tbody>
-        </table>
         <hr>
         <table class="table">
             <tr>

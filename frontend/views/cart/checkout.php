@@ -62,13 +62,38 @@ use yii\bootstrap5\ActiveForm;
                 <h4>Order Summary</h4>
             </div>
             <div class="card-body">
+                <table class="table table-sm">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach ($cartItems as $item): ?>
+                        <tr>
+                            <td>
+                                <img src="<?php echo \common\models\Product::formatImageUrl($item['image'])?>" alt="<?php echo $item['name']?>"
+                                     style="width: 50px">
+                            </td>
+                            <td><?php echo $item['name']?></td>
+                            <td><?=$item['quantity']?></td>
+                            <td><?php echo Yii::$app->formatter->asCurrency($item['price']) ?></td>
+                        </tr>
+                    <?php endforeach;?>
+                    </tbody>
+                </table>
+                <hr>
                 <table class="table">
                     <tr>
-                        <td><?= $productQuantity > 1 ? $productQuantity . " products" : $productQuantity . " product" ?></td>
+                        <td>Total Items</td>
+                        <td class="float-end"><?= $productQuantity > 1 ? $productQuantity . " products" : $productQuantity . " product" ?></td>
                     </tr>
                     <tr>
                         <td>Total Price</td>
-                        <td><?= Yii::$app->formatter->asCurrency($totalPrice) ?></td>
+                        <td class="float-end"><?= Yii::$app->formatter->asCurrency($totalPrice) ?></td>
                     </tr>
 
                 </table>
