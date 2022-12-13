@@ -7,4 +7,7 @@ class TestController
     public function actionTest(){
 
     }
+    public function actionIndex(){
+
+    }
 }
