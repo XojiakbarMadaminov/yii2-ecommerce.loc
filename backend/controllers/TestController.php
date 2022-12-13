@@ -10,4 +10,8 @@ class TestController
     public function actionIndex(){
 
     }
+    public function actionCreate(){
+
+    }
+
 }
